@@ -5,8 +5,6 @@ const path=require("path");
 const Chats=require("./models/chats.js");
 const methodOverride=require("method-override");
 
-
-
 app.listen(8080,()=>{
     console.log("server is listening to 8080");
 })
@@ -40,17 +38,17 @@ app.get("/",(req,res)=>{
 // Chats.insertMany(chat1);//Mistake:insertOne is basically a function which exists in mongDb not in mongoose
 
 //index route
-app.get("https://mongo3-mu.vercel.app/chats",async (req,res)=>{
+app.get("/chats",async (req,res)=>{
     let chats=await Chats.find();
     console.log(chats);
    res.render("index.ejs",{chats});
 })
 //new route
-app.get("https://mongo3-mu.vercel.app/chats/new",(req,res)=>{
+app.get("/chats/new",(req,res)=>{
     res.render("new.ejs");
 })
 //create route
-app.post("https://mongo3-mu.vercel.app/chats",(req,res)=>{
+app.post("/chats",(req,res)=>{
     let {from,to,message}=req.body;
     let newChat=new Chats({
         from:from,
@@ -67,13 +65,13 @@ app.post("https://mongo3-mu.vercel.app/chats",(req,res)=>{
 })
 
 //edit route
-app.get("https://mongo3-mu.vercel.app/chats/:id/edit",async (req,res)=>{
+app.get("/chats/:id/edit",async (req,res)=>{
     let {id}=req.params;
     let chat=await Chats.findById(id);
     res.render("edit.ejs",{chat});
 })
 //update route
-app.put("https://mongo3-mu.vercel.app/chats/:id",async (req,res)=>{
+app.put("/chats/:id",async (req,res)=>{
     let {id}=req.params;
     let {message:newMsg}=req.body;
     let updatedChat=await Chats.findByIdAndUpdate(id,{message:newMsg},{runValidators:true,new:true});
@@ -81,10 +79,8 @@ app.put("https://mongo3-mu.vercel.app/chats/:id",async (req,res)=>{
     res.redirect("/chats");
 })
 //DESTROY ROUTE
-app.delete("https://mongo3-mu.vercel.app/chats/:id",async (req,res)=>{
+app.delete("/chats/:id",async (req,res)=>{
     let {id}=req.params;
     let deletedChat=await Chats.findByIdAndDelete(id);
     res.redirect("/chats");
 })
-
-require('./init.js');

@@ -18,11 +18,11 @@
         <p><b>From:</b> <%=chat.from%></p>
         <div class="msg">
             <p id="message"><b>Message: </b><%=chat.message%></p>
-            <form action="https://mongo3-mu.vercel.app/chats/<%=chat._id%>/edit" method="get">
+            <form action="/chats/<%=chat._id%>/edit" method="get">
                 <button>edit</button>
             </form>
 
-            <form action="https://mongo3-mu.vercel.app/chats/<%=chat._id%>?_method=DELETE" method="post">
+            <form action="/chats/<%=chat._id%>?_method=DELETE" method="post">
             <button>delete</button>
             </form>
         </div>
