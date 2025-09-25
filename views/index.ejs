@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rendering index.ejs</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <h3>All chats!</h3>
+    <hr>
+    <form action="/chats/new" method="get" class="new-chat-form">
+        <button id="button1">new chat</button>
+    </form>
+    <br>
+    <%for(let chat of chats){%>
+    <div class="chat">
+        <p><b>From:</b> <%=chat.from%></p>
+        <div class="msg">
+            <p id="message"><b>Message: </b><%=chat.message%></p>
+            <form action="/chats/<%=chat._id%>/edit" method="get">
+                <button>edit</button>
+            </form>
+
+            <form action="/chats/<%=chat._id%>?_method=DELETE" method="post">
+            <button>delete</button>
+            </form>
+        </div>
+        <p><b>Received by:</b> <%=chat.to%></p>
+        
+        <hr>
+        <p><%=new Date(chat.createdAt).toLocaleString()%>  </p>
+    </div>
+<%}%>
+</body>
+</html>
+

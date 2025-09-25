@@ -1,0 +1,33 @@
+.chat{
+    
+    background-color:aqua;
+    border-radius: 40px;
+    margin-left:20px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+h3{
+    text-align: center;
+    background-color:  #DCF8C6  ;
+}
+#message{
+    color: blueviolet;
+}
+.chat:hover{
+    background-color:coral ;
+    transform: scale(1.03);
+}
+.new-chat-form {
+    display: flex;
+    justify-content: center;
+}
+
+#button1{
+    width: 300px;
+    background-color: gold;
+    border: red 2px solid;
+}
+
+#button1:hover{
+    transform: scale(1.3);
+}
