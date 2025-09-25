@@ -1,15 +1,16 @@
-    {
-      "version": 2,
-      "builds": [
-        {
-          "src": "api/*.js", // Adjust this path to your API entry point(s)
-          "use": "@vercel/node"
-        }
-      ],
-      "routes": [
-        {
-          "src": "/api/(.*)", // Define routes to your API endpoints
-          "dest": "/api/$1"
-        }
-      ]
-    }
+{
+ "version": 2,
+ "builds": [
+  {
+   "src": "app.js",
+   "use": "@vercel/node",
+   "config": { "includeFiles": ["dist/**"] }
+  }
+ ],
+ "routes": [
+  {
+   "src": "/(.*)",
+   "dest": "app.js"
+  }
+ ]
+}
