@@ -8,7 +8,7 @@
 <body>
     <h3>edit your chat:<%=chat._id%></h3>
     <p>This chat was sent from <b><%=chat.from%></b> to <b><%=chat.to%></b></p>
-    <form action="/chats/<%=chat._id%>?_method=PUT" method="POST">
+    <form action="https://mongo3-mu.vercel.app/chats/<%=chat._id%>?_method=PUT" method="POST">
         <textarea name="message" id="message" rows="5" cols="10"><%=chat.message%></textarea>
         <button>Edit</button>
     </form>
